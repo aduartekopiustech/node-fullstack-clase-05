@@ -18,8 +18,8 @@
 
 ## CONTENIDO
 
-1. [Objetivos y requisitos](#1-objetivos-y-requisitos)
-2. [Fundamentos de un WebServer](#2-fundamentos-de-un-webserver)
+1. [Objetivo](#1-objetivos-y-requisitos)
+2. [WebServer: Fundamentos](#2-fundamentos-de-un-webserver)
    - [El modelo cliente-servidor](#21-el-modelo-cliente-servidor)
    - [El recorrido de una petición](#22-el-recorrido-de-una-petición)
    - [Anatomía de la petición y la respuesta](#23-anatomía-de-la-petición-y-la-respuesta)
@@ -57,7 +57,6 @@
    - [Helpers](#58-helpers)
    - [Otras cosas que se pueden hacer](#59-otras-cosas-que-se-pueden-hacer)
    - [runtimeOptions y prototipos](#510-runtimeoptions-y-prototipos)
-   - [Seguridad](#511-seguridad)
 6. [Arquitectura del proyecto](#6-arquitectura-del-proyecto)
 7. [Tarea 011: sitio completo con Express, Handlebars y Railway](#7-tarea-011-sitio-completo-con-express-handlebars-y-railway)
    - [El template](#71-el-template)
@@ -72,12 +71,11 @@
 
 ---
 
-> [!NOTE]
-> Esta clase es el puente entre "escribir scripts" y "publicar un sitio". Empezamos por el protocolo HTTP, seguimos con el servidor nativo de Node, después con Express y terminamos renderizando HTML en el servidor con Handlebars. Handlebars se usa como herramienta didáctica para entender el renderizado del lado del servidor (SSR), no como una obligación para todos los proyectos.
+## 1. Objetivos
 
-## 1. Objetivos y requisitos
+Esta clase tiene como objetivo ser el puente entre "escribir scripts" y "publicar un sitio". Empezamos por el protocolo HTTP, seguimos con el servidor nativo de Node, después con Express y terminamos renderizando HTML en el servidor con Handlebars. Handlebars se usa como herramienta didáctica para entender el renderizado del lado del servidor (SSR), no como una obligación para todos los proyectos.:
 
-Al finalizar la clase podrás:
+**Que vamos a ver:**
 
 - Explicar el ciclo **request/response** y qué responsabilidad tiene cada parte.
 - Levantar un servidor con `node:http` y responder distintas rutas a mano.
@@ -85,7 +83,7 @@ Al finalizar la clase podrás:
 - Servir un sitio con contenido estático de forma segura y con caché.
 - Renderizar vistas dinámicas con Handlebars, layouts, partials y helpers.
 - Pasar datos desde el controlador a la vista y entender el contrato entre ambos.
-- Desplegar la aplicación en Railway con un puerto y un host correctos.
+- Desplegar la aplicación en Railway.
 
 **Requisitos:**
 
@@ -94,13 +92,6 @@ Al finalizar la clase podrás:
 - Cuenta de GitHub (para desplegar desde un repositorio).
 - Cuenta de Railway (el plan gratuito alcanza para la tarea).
 
-Verificar el entorno:
-
-```bash
-node --version
-npm --version
-```
-
 > [!IMPORTANT]
 > Usaremos **ES Modules**. El archivo `package.json` debe contener `"type": "module"`. Todos los ejemplos asumen esa configuración.
 
@@ -108,7 +99,7 @@ npm --version
 
 ---
 
-## 2. Fundamentos de un WebServer
+## 2. WebServer: Fundamentos
 
 Un **servidor web** es un proceso que:
 
@@ -1433,23 +1424,6 @@ response.render("user", {
 > [!IMPORTANT]
 > El controlador es el lugar donde se transforman los datos para la vista. Ese objeto plano es el **contrato** entre backend y plantilla.
 
-### 5.11 Seguridad
-
-1. **Escape siempre por defecto.** `{{value}}` escapa HTML. No lo desactives con `{{{ }}}` para datos de usuario.
-2. **No confíes en el contexto.** Un dato puede venir de un formulario, de una API o de la base, y seguir siendo peligroso.
-3. **La validación es del servidor.** El HTML puede tener `required`, pero la decisión final se toma en el handler.
-4. **No pongas lógica de negocio en la plantilla.** Si necesitás una regla compleja, va en un helper o en el controlador.
-5. **Cuidado con los atributos.** Handlebars escapa comillas, pero un atributo sin comillas sigue siendo un riesgo. Escribí `class="{{value}}"`, no `class={{value}}`.
-6. **No renderices HTML de un editor externo sin sanitizar.** Triple llave + contenido de terceros = XSS.
-
-```handlebars
-{{! Bien: escapado }}
-<p>{{comment}}</p>
-
-{{! Mal: HTML de usuario sin sanitizar }}
-<div>{{{comment}}}</div>
-```
-
 <sub>[⬆ Volver al índice](#contenido)</sub>
 
 ---
@@ -1458,8 +1432,6 @@ response.render("user", {
 
 ```text
 node-fullstack-clase-05/
-├── docs/
-│   └── clase-01-webserver-express-handlebars.md
 ├── public/
 │   ├── assets/
 │   │   ├── css/main.css
@@ -1621,7 +1593,7 @@ for (const signal of ["SIGINT", "SIGTERM"]) {
 
 ### 7.1 El template
 
-El template de ejemplo se descarga desde el link publicado en el repositorio de la clase. Es solo el punto de partida visual: el objetivo es convertirlo en vistas y alimentarlo desde el controlador, no analizarlo archivo por archivo.
+El template de ejemplo se descarga desde este [link](https://github.com/aduartekopiustech/node-fullstack-clase-05/blob/main/docs/template/templated-roadtrip.zip). Es solo el punto de partida visual: el objetivo es convertirlo en vistas y alimentarlo desde el controlador, no analizarlo archivo por archivo.
 
 Mapa de conversión:
 
