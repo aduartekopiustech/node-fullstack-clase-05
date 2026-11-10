@@ -1,0 +1,16 @@
+<p>Hola <strong>{{alumno}}</strong>, bienvenido a {{curso}}.</p>
+
+<h2>Temas de la clase</h2>
+<ul>
+  {{#each temas}}
+    <li>{{this}}</li>
+  {{/each}}
+</ul>
+
+<h2>Escape</h2>
+<p>
+  Doble llave (escapa): <code>{{html}}</code>
+</p>
+<p>
+  Triple llave (no escapa): {{{html}}}
+</p>

@@ -1,0 +1,12 @@
+<article class="post">
+  <header>
+    <h1>{{post.title}}</h1>
+    <p>{{formatDate post.date}}</p>
+  </header>
+
+  {{#each post.body}}
+    <p>{{this}}</p>
+  {{/each}}
+
+  <p><a href="/">← Volver al inicio</a></p>
+</article>

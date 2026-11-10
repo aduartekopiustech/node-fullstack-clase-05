@@ -1,0 +1,29 @@
+{
+  "name": "node-fullstack-clase-05",
+  "version": "1.0.0",
+  "description": "Clase 5 de NodeJS · WebServer: HTTP nativo, Express y Handlebars",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "native": "nodemon examples/native-server.js",
+    "express:basic": "nodemon examples/express-basic.js",
+    "express:routing": "node examples/express-routing.js",
+    "express:middleware": "node examples/express-middleware.js",
+    "express:static": "nodemon examples/express-static.js",
+    "express:errors": "node examples/express-errors.js",
+    "handlebars": "node examples/handlebars/server.js",
+    "handlebars:basic": "node examples/handlebars-basic/server.js",
+    "dev": "node --watch examples/handlebars/server.js",
+    "start": "node examples/handlebars/server.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "express-handlebars": "^9.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

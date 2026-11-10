@@ -1,0 +1,38 @@
+<h1>{{title}}</h1>
+
+<section class="box">
+  <h2>Helpers</h2>
+  <p>{{upper site.tagline}}</p>
+  <p>{{formatDate posts.[0].date}}</p>
+</section>
+
+<section class="box">
+  <h2>#each y variables de bloque</h2>
+  <ul>
+    {{#each nav}}
+      <li>
+        {{@index}} — {{label}}
+        {{#if @first}}(primero){{/if}}
+        {{#if @last}}(último){{/if}}
+      </li>
+    {{/each}}
+  </ul>
+</section>
+
+<section class="box">
+  <h2>#if / #with</h2>
+  {{#if posts.length}}
+    <p>Hay {{posts.length}} posts publicados.</p>
+  {{else}}
+    <p>Sin posts todavía.</p>
+  {{/if}}
+
+  {{#with site}}
+    <p>{{name}} — {{tagline}}</p>
+  {{/with}}
+</section>
+
+<section class="box">
+  <h2>Debug con el helper json</h2>
+  <pre>{{json posts}}</pre>
+</section>

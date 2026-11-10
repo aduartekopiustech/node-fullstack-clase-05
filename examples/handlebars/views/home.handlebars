@@ -1,0 +1,14 @@
+<section class="banner">
+  <h2>{{title}}</h2>
+  <p>{{site.tagline}}</p>
+</section>
+
+{{#if posts.length}}
+  <section class="posts">
+    {{#each posts}}
+      {{> post-card post=this}}
+    {{/each}}
+  </section>
+{{else}}
+  <p>Todavía no hay posts publicados.</p>
+{{/if}}
