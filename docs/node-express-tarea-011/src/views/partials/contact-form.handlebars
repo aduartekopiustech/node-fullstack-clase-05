@@ -1,0 +1,31 @@
+<form action="/contact" method="post">
+
+	<div class="field half first">
+		<label for="name">Name</label>
+		<input id="name" name="name" type="text" placeholder="Name" value="{{contact.name}}" minlength="2" autocomplete="name" required />
+	</div>
+	<div class="field half">
+		<label for="email">Email</label>
+		<input id="email" name="email" type="email" placeholder="Email" value="{{contact.email}}" autocomplete="email" required />
+	</div>
+	<div class="field">
+		<label for="message">Message</label>
+		<textarea id="message" name="message" rows="6" placeholder="Message" minlength="10" required>{{contact.message}}</textarea>
+	</div>
+
+	{{#if contact.sent}}
+		<p class="form-feedback success" role="status">¡Gracias! Tu mensaje fue enviado.</p>
+	{{/if}}
+
+	{{#if contact.errors.length}}
+		<ul class="error-list" role="alert">
+			{{#each contact.errors}}
+				<li>{{this}}</li>
+			{{/each}}
+		</ul>
+	{{/if}}
+
+	<ul class="actions">
+		<li><input value="Send Message" class="button alt" type="submit" /></li>
+	</ul>
+</form>

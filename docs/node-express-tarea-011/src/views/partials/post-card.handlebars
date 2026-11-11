@@ -1,0 +1,19 @@
+<section id="{{anchor}}" class="wrapper post bg-img" data-bg="{{image}}">
+	<div class="inner">
+		<article class="box">
+			<header>
+				<h2>{{#if @first}}<span class="post-first">Primer post</span> {{/if}}{{title}}</h2>
+				<p>{{formatDate date}}</p>
+			</header>
+			<div class="content">
+				<p>{{summary}}</p>
+			</div>
+			<footer>
+				<a href="/posts/{{slug}}" class="button alt">Learn More</a>
+			</footer>
+		</article>
+	</div>
+	{{#if nextAnchor}}
+		<a href="#{{nextAnchor}}" class="more">Learn More</a>
+	{{/if}}
+</section>

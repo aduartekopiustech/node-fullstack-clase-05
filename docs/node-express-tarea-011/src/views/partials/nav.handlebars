@@ -1,0 +1,7 @@
+<nav id="menu">
+	<ul class="links">
+		{{#each nav}}
+			<li><a href="{{href}}"{{#if (eq key @root.section)}} class="active" aria-current="page"{{/if}}>{{label}}</a></li>
+		{{/each}}
+	</ul>
+</nav>

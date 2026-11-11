@@ -1,0 +1,20 @@
+{
+  "name": "node-express-tarea-011",
+  "version": "1.0.0",
+  "description": "Road Trip converted to a server-rendered Express + Handlebars site",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.3.0",
+    "express-handlebars": "^9.0.4"
+  }
+}
